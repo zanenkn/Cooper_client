@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DisplayCooperResult from './Components/DisplayCooperResult'
 import InputFields from './Components/InputFields'
+import LoginForm from './Components/LoginForm'
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class App extends Component {
     this.state = {
       distance: '',
       gender: 'female',
-      age: ''
+      age: '',
+      renderLoginForm: false
     }
   }
 
@@ -19,20 +21,33 @@ class App extends Component {
   }
 
   render() {
-     return (
-        <>
-          <InputFields
-            inputChangeHandler={this.onChange.bind(this)}
-          />
-          
-         <DisplayCooperResult
-            distance={this.state.distance}
-            gender={this.state.gender}
-            age={this.state.age}
-          />
-       </>
-     );
-   }
- }
+    let renderLogin
+
+    if (this.state.renderLoginForm === true) {
+      renderLogin = (
+        <LoginForm />
+      )
+    } else {
+      renderLogin = (
+        <button id="login" onClick={() => this.setState({ renderLoginForm: true})}>Login</button>
+      )
+    }
+
+    return (
+      <>
+        <InputFields
+          inputChangeHandler={this.onChange.bind(this)}
+        />
+        
+        <DisplayCooperResult
+          distance={this.state.distance}
+          gender={this.state.gender}
+          age={this.state.age}
+        />
+        {renderLogin}
+      </>
+    );
+  }
+}
 
 export default App
