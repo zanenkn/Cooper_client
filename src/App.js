@@ -23,10 +23,8 @@ class App extends Component {
         <>
           <InputFields
             inputChangeHandler={this.onChange.bind(this)}
-            distance={this.props.distance}
-            gender={this.props.gender}
-            age={this.props.age}
           />
+          
          <DisplayCooperResult
             distance={this.state.distance}
             gender={this.state.gender}
