@@ -110,6 +110,7 @@ class App extends Component {
         />
         {performanceDataIndex}
         {renderLogin}
+        <button id="signup">Sign up</button>
       </>
     );
   }
