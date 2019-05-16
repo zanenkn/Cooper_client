@@ -22,12 +22,13 @@ class App extends Component {
 
   onChange(event) {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
+      entrySaved: false
     })
   }
 
   entryHandler() {
-    this.setState({ entrySaved: true})
+    this.setState({ entrySaved: true })
   }
 
   async onLogin(e) {
