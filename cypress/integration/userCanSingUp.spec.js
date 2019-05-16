@@ -1,4 +1,4 @@
-describe('User can sign in', () => {
+describe('User can sign up', () => {
   it('successfully', () => {
     cy.visit('http://localhost:3001');
     cy.get('#signup').click();

@@ -3,7 +3,7 @@ import DisplayCooperResult from './Components/DisplayCooperResult'
 import InputFields from './Components/InputFields.jsx'
 import LoginForm from './Components/LoginForm'
 import SignupForm from './Components/SignupForm'
-import { authenticate } from './Modules/Auth'
+import { authenticate, register } from './Modules/Auth'
 import DisplayPerformanceData from './Components/DisplayPerformanceData'
 
 class App extends Component {
@@ -53,8 +53,8 @@ class App extends Component {
   async onSignup(e) {
     e.preventDefault();
     let resp = await register(this.state.email, this.state.password, this.state.password_confirmation)
-    if (resp.registered === true) {
-      this.setState({ registered: true });
+    if (resp.authenticated === true) {
+      this.setState({ authenticated: true });
     } else {
       this.setState({ message: resp.message, renderSignupForm: false })
     }
@@ -121,7 +121,7 @@ class App extends Component {
         renderSignup = (
           <>
             <button id="signup" onClick={() => this.setState({ renderSignupForm: true})}>Sign up</button>
-            {/* <p>{this.state.message}</p> */}
+            <p>{this.state.message}</p>
           </>
         )
       }
