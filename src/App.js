@@ -20,7 +20,8 @@ class App extends Component {
       message: '',
       entrySaved: false,
       renderIndex: false,
-      renderSignupForm: false
+      renderSignupForm: false,
+      password_confirmaton: ''
     }
   }
 
@@ -48,6 +49,17 @@ class App extends Component {
       this.setState({ message: resp.message, renderLoginForm: false })
     }
   }
+
+  async onSignup(e) {
+    e.preventDefault();
+    let resp = await register(this.state.email, this.state.password, this.state.password_confirmation)
+    if (resp.registered === true) {
+      this.setState({ registered: true });
+    } else {
+      this.setState({ message: resp.message, renderSignupForm: false })
+    }
+  }
+
 
   render() {
     let renderLogin;

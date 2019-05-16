@@ -5,23 +5,23 @@ const SignupForm = () => {
     <form id="signup-form">
       <div>
         <label >Email</label>
-        <input id="email"></input>
+        <input id="email" onChange={props.inputChangeHandler}></input>
       </div>
 
       <div>
         <label>Password</label>
-        <input id="password"></input>
+        <input id="password" onChange={props.inputChangeHandler}></input>
       </div>
 
       <div>
         <label>Password confirmation</label>
-        <input id="password-confirmation"></input>
+        <input id="password_confirmation" onChange={props.inputChangeHandler}></input>
       </div>
 
 
-      <button id="submit">Submit</button>
+      <button onClick={(e) => props.signupHandler(e)} id="submit">Submit</button>
     </form>
   )
 }
 
-export default SignupForm;
+export default SignupForm
