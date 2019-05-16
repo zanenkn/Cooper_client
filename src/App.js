@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DisplayCooperResult from './Components/DisplayCooperResult'
 import InputFields from './Components/InputFields.jsx'
 import LoginForm from './Components/LoginForm'
+import SignupForm from './Components/SignupForm'
 import { authenticate } from './Modules/Auth'
 import DisplayPerformanceData from './Components/DisplayPerformanceData'
 
@@ -18,7 +19,8 @@ class App extends Component {
       password: '',
       message: '',
       entrySaved: false,
-      renderIndex: false
+      renderIndex: false,
+      renderSignupForm: false
     }
   }
 
@@ -51,6 +53,7 @@ class App extends Component {
     let renderLogin;
     let user;
     let performanceDataIndex;
+    let renderSignup;
 
     if (this.state.authenticated === true) {
       user = JSON.parse(sessionStorage.getItem('credentials')).uid
@@ -91,6 +94,28 @@ class App extends Component {
           </>
         )
       }
+
+      
+      if (this.state.renderSignupForm === true) {
+        renderSignup = (
+          <>
+            <SignupForm 
+              signupHandler={this.onSignup.bind(this)}
+              inputChangeHandler={this.onChange.bind(this)}
+            />
+          </>
+        )
+      } else {
+        renderSignup = (
+          <>
+            <button id="signup" onClick={() => this.setState({ renderSignupForm: true})}>Sign up</button>
+            {/* <p>{this.state.message}</p> */}
+          </>
+        )
+      }
+
+
+
     }
   
 
@@ -110,7 +135,7 @@ class App extends Component {
         />
         {performanceDataIndex}
         {renderLogin}
-        <button id="signup">Sign up</button>
+        {renderSignup}
       </>
     );
   }
