@@ -15,7 +15,8 @@ class App extends Component {
       authenticated: false,
       email: '',
       password: '',
-      message: ''
+      message: '',
+      entrySaved: false
     }
   }
 
@@ -23,6 +24,10 @@ class App extends Component {
     this.setState({
       [event.target.id]: event.target.value
     })
+  }
+
+  entryHandler() {
+    this.setState({ entrySaved: true})
   }
 
   async onLogin(e) {
@@ -74,6 +79,9 @@ class App extends Component {
           distance={this.state.distance}
           gender={this.state.gender}
           age={this.state.age}
+          authenticated={this.state.authenticated}
+          entrySaved={this.state.entrySaved}
+          entryHandler={this.entryHandler.bind(this)}
         />
         {renderLogin}
       </>
