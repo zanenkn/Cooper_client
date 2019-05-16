@@ -23,11 +23,19 @@ describe('User attempts save data', () => {
     cy.get('select[id="gender"]').select('female')
     cy.get('input[id="age"]').type('23')
     cy.get('#save-result').click()
-    cy.contains('Your entry waas saved')
+    cy.contains('Your entry was saved')
+  });
+
+  it('can save two different entries', () => {
+    cy.get('input[id="distance"]').type('1000')
+    cy.get('select[id="gender"]').select('female')
+    cy.get('input[id="age"]').type('23')
+    cy.get('#save-result').click()
+    cy.contains('Your entry was saved')
     cy.get('input[id="distance"]')
       .clear()
       .type('1500')
     cy.get('#save-result').click()
-    cy.contains('Your entry was saved')    
+    cy.contains('Your entry was saved')
   })
 })
