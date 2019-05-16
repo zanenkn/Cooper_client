@@ -18,6 +18,6 @@ describe('User can log in', () => {
       cy.get('#password').type('wrongpassword')
       cy.get('button').click()
     })
-    cy.contains('Invalid login credentias. Please try again.')
+    cy.contains('Invalid login credentials. Please try again.')
   })
 })

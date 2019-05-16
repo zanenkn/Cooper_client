@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DisplayCooperResult from './Components/DisplayCooperResult'
-import InputFields from './Components/InputFields'
+import InputFields from './Components/InputFields.jsx'
 import LoginForm from './Components/LoginForm'
 import { authenticate } from './Modules/Auth'
 
