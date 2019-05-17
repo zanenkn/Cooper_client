@@ -29,7 +29,7 @@ describe('User can sign up', () => {
       status: "401",
       response: {
         "errors": [
-          "Invalid signup credentials. Please try again."
+          "Email is not an email"
         ],
         "success":false
       }
@@ -41,7 +41,7 @@ describe('User can sign up', () => {
       cy.get('#password_confirmation').type('password')
       cy.get('button').click()
     })
-    cy.contains('Invalid signup credentials. Please try again.')
+    cy.contains('Email is not an email')
   })
 
   it('with invalid credentials - password confirmation failed', () => {
@@ -53,7 +53,7 @@ describe('User can sign up', () => {
       status: "401",
       response: {
         "errors": [
-          "Invalid signup credentials. Please try again."
+          "Password confirmation doesn't match Password"
         ],
         "success":false
       }
@@ -65,6 +65,6 @@ describe('User can sign up', () => {
       cy.get('#password_confirmation').type('badword')
       cy.get('button').click()
     })
-    cy.contains('Invalid signup credentials. Please try again.')
+    cy.contains("Password confirmation doesn't match Password")
   })
 })
