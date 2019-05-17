@@ -56,13 +56,14 @@ class App extends Component {
     if (resp.authenticated === true) {
       this.setState({ authenticated: true });
     } else {
+      debugger
       this.setState({ message: resp.message, renderSignupForm: false })
     }
   }
 
   async onLogout(e) {
     e.preventDefault();
-    let resp = await logout(this.state.email, this.state.password)
+    let resp = await logout()
     if (resp.authenticated === false) {
       this.setState({ authenticated: false });
     } else {
