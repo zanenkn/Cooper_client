@@ -66,11 +66,15 @@ class App extends Component {
     let user;
     let performanceDataIndex;
     let renderSignup;
+    let renderLogout
 
     if (this.state.authenticated === true) {
       user = JSON.parse(sessionStorage.getItem('credentials')).uid
       renderLogin = (
         <p>Hi {user}</p>
+      )
+      renderLogout =(
+        <button id='logout' onClick= {() => this.setState({ authenticated: false })}>Log out</button>
       )
 
       if (this.state.renderIndex === true) {
@@ -148,6 +152,7 @@ class App extends Component {
         {performanceDataIndex}
         {renderLogin}
         {renderSignup}
+        {renderLogout}
       </>
     );
   }
