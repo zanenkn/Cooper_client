@@ -34,8 +34,6 @@ class CooperCalculator extends Component {
           distance={this.state.distance}
           gender={this.state.gender}
           age={this.state.age}
-          entryHandler={this.entryHandler.bind(this)}
-          authenticated={this.state.authenticated}
         />
       </>
     );
