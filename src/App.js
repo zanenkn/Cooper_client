@@ -3,7 +3,7 @@ import DisplayCooperResult from './Components/DisplayCooperResult'
 import InputFields from './Components/InputFields.jsx'
 import LoginForm from './Components/LoginForm'
 import SignupForm from './Components/SignupForm'
-import { authenticate, register } from './Modules/Auth'
+import { authenticate, register, logout } from './Modules/Auth'
 import DisplayPerformanceData from './Components/DisplayPerformanceData'
 
 class App extends Component {
@@ -60,6 +60,16 @@ class App extends Component {
     }
   }
 
+  async onLogout(e) {
+    e.preventDefault();
+    let resp = await logout(this.state.email, this.state.password)
+    if (resp.authenticated === false) {
+      this.setState({ authenticated: false });
+    } else {
+      this.setState({ message: resp.message })
+    }
+  }
+
 
   render() {
     let renderLogin;
@@ -74,7 +84,12 @@ class App extends Component {
         <p>Hi {user}</p>
       )
       renderLogout =(
-        <button id='logout' onClick= {() => this.setState({ authenticated: false })}>Log out</button>
+        <>
+        <button id="logout" onClick={this.onLogout.bind(this)}>Log out</button>
+        {/* logoutHandler=
+
+        {(e) => props.logoutHandler(e)} */}
+        </>
       )
 
       if (this.state.renderIndex === true) {

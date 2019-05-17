@@ -30,6 +30,18 @@ const register = async (email, password, password_confirmation) => {
   } 
 }
 
+const logout = async (email, password) => {
+  const path = apiUrl + '/auth/sign_out'
+  try {
+    let response = await axios.delete(path, {
+      params: { email: email, password: password }})
+    await storeAuthCredentials(response)
+    return { authenticated: false }
+  } catch (error) {
+    return { authenticated: true, message: error.response.data.errors[0] }
+  }
+}
+
 const storeAuthCredentials = ({ headers }) => {
   return new Promise((resolve) => {
     const uid = headers['uid'],
@@ -48,4 +60,4 @@ const storeAuthCredentials = ({ headers }) => {
   })
 };
 
-export { authenticate, register, storeAuthCredentials }
+export { authenticate, register, logout, storeAuthCredentials }
