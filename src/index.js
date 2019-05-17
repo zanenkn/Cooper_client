@@ -1,25 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import * as serviceWorker from './serviceWorker'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
-import InputFields from '../Components/InputFields'
-import DisplayPerformanceData from '../Components/DisplayPerformanceData'
+import CooperCalculator from './Components/InputFields'
+import DisplayPerformanceData from './Components/DisplayPerformanceData'
+import Header from './Components/Header'
 
 const Application = () => {
   return (
     <>
     <Header />
-      <Switch>
-        <Route exact path='/' component={InputFields}></Route>
-        <Route exact path='/history' component={DisplayPerformanceData}></Route>
-      </Switch>
+    <Switch>
+      <Route exact path='/' component={CooperCalculator}></Route>
+      <Route exact path='/history' component={DisplayPerformanceData}></Route>
+    </Switch>
     </>
   )
 }
 
 
-ReactDOM.render( 
+ReactDOM.render((
   <BrowserRouter>
     <Application />
   </BrowserRouter>
