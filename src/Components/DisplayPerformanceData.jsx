@@ -24,10 +24,17 @@ class DisplayPerformanceData extends Component {
   render () {
     let dataIndex;
 
+    let distances = []
+    let labels = []
+
     if (this.props.updateIndex === true) {
       this.getPerformanceData();
     }
     if (this.state.performanceData != null) {
+      this.state.performanceData.forEach(entry => {
+        distances.push(entry.data.distance)
+        labels.push(entry.created_at)
+      })
       dataIndex = (
         <>
           {this.state.performanceData.map(item => {
