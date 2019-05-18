@@ -4,6 +4,7 @@ import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 import { authenticate, register, logout } from '../Modules/Auth'
 
+
 class Header extends Component {  
   constructor(props) {
     super(props)
@@ -113,7 +114,7 @@ class Header extends Component {
     return (
       <>
         <ul>
-          <li><NavLink activeStyle={{fontWeight: 'bold'}} to='/'>Cooper Calculator</NavLink></li>
+          <li><NavLink activeStyle={{fontWeight: 'bold'}} to='/cooper'>Cooper Calculator</NavLink></li>
           <li><NavLink activeStyle={{fontWeight: 'bold'}} to='/history'>History</NavLink></li>   
         </ul>
     

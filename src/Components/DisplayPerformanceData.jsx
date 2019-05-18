@@ -8,15 +8,18 @@ class DisplayPerformanceData extends Component {
       performanceData: null
     }
   }
+
+  //   indexUpdated() {
+  //   this.setState({ updateIndex: false })
+  // }
+
   componentDidMount() {
     this.getPerformanceData()
   }
   async getPerformanceData() {
     let result = await getData();
-    this.setState({performanceData: result.data.entries}, () => {
-      this.props.indexUpdated();
-    })
-  }
+    this.setState({performanceData: result.data.entries})}
+
   render () {
     let dataIndex;
 

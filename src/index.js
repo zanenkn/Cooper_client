@@ -11,7 +11,7 @@ const Application = () => {
     <>
     <Header />
     <Switch>
-      <Route exact path='/' component={CooperCalculator}></Route>
+      <Route exact path='/cooper' component={CooperCalculator}></Route>
       <Route exact path='/history' component={DisplayPerformanceData}></Route>
     </Switch>
     </>
