@@ -49,17 +49,27 @@ class DisplayPerformanceData extends Component {
     }
 
     let data = {
+      labels: labels,
       datasets: [{
+        label: "My runs",
         data: distances,
+        fill: false,
+        lineTension: 0.1,
+        borderColor: "#00cc99",
       }],
-      labels: labels
-    };
+    }
+
+  //   options: {
+  //     bezierCurve: false
+  //   }
+  // }
 
     return (
       <>
         {dataIndex}
-        <Line 
-          data={data}/>
+        <Line
+          data={data}
+          />
       </>
     )
   }
