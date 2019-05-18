@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/PerformanceData'
-import { Line } from 'react-chartjs-2'
+import { Line, Pie } from 'react-chartjs-2'
 import moment from 'moment'
 
 class DisplayPerformanceData extends Component {
@@ -26,6 +26,7 @@ class DisplayPerformanceData extends Component {
     let dataIndex;
     let distances = []
     let labels = []
+    let messages = []
 
     if (this.props.updateIndex === true) {
       this.getPerformanceData();
@@ -38,6 +39,7 @@ class DisplayPerformanceData extends Component {
         let momentString = momentObj.format('YYYY-MM-DD');
         distances.push(entry.data.distance)
         labels.push(momentString)
+        messages.push(entry.data.message)
       })
       dataIndex = (
         <>
@@ -48,7 +50,8 @@ class DisplayPerformanceData extends Component {
       )
     }
 
-    let data = {
+
+    let line = {
       labels: labels,
       datasets: [{
         label: "My runs",
@@ -59,16 +62,33 @@ class DisplayPerformanceData extends Component {
       }],
     }
 
-  //   options: {
-  //     bezierCurve: false
-  //   }
-  // }
+    let pie = {
+      labels: [
+        'Excellent',
+        'Above average',
+        'Average',
+        'Below average',
+        'Poor'
+      ],
+      datasets: [{
+        data: [
+          messages.filter(item => item === "Excellent").length,
+          messages.filter(item => item === "Above average").length,
+          messages.filter(item => item === "Average").length,
+          messages.filter(item => item === "Below average").length,
+          messages.filter(item => item === "Poor").length
+        ]
+      }],
+    }
 
     return (
       <>
         {dataIndex}
         <Line
-          data={data}
+          data={line}
+          />
+        <Pie 
+          data={pie}
           />
       </>
     )
