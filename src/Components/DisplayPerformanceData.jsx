@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/PerformanceData'
 import { Line } from 'react-chartjs-2'
+import moment from 'moment'
 
 class DisplayPerformanceData extends Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class DisplayPerformanceData extends Component {
 
   render () {
     let dataIndex;
-
     let distances = []
     let labels = []
 
@@ -32,8 +32,12 @@ class DisplayPerformanceData extends Component {
     }
     if (this.state.performanceData != null) {
       this.state.performanceData.forEach(entry => {
+        let dateString = entry.created_at;
+        let dateObj = new Date(dateString);
+        let momentObj = moment(dateObj)
+        let momentString = momentObj.format('YYYY-MM-DD');
         distances.push(entry.data.distance)
-        labels.push(entry.created_at)
+        labels.push(momentString)
       })
       dataIndex = (
         <>
