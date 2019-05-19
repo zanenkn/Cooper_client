@@ -19,6 +19,10 @@ class Nav extends Component {
       password_confirmaton: ''
     }
   }
+
+  componentDidUpdate(){
+    setTimeout(() => this.setState({message:''}), 10000);
+  }
   
   onChange(event) {
     this.setState({
@@ -42,7 +46,6 @@ class Nav extends Component {
     if (resp.authenticated === true) {
       this.setState({ authenticated: true });
     } else {
-      debugger
       this.setState({ message: resp.message, renderSignupForm: false })
     }
   }
@@ -79,18 +82,23 @@ class Nav extends Component {
             id="signup" 
             style={{ margin: '0.5em' }} 
             onClick={() => 
-              this.setState({ renderSignupForm: true })
+              this.setState({ renderSignupForm: true, renderLoginForm: false })
             }>
               Sign up
-          </Button>
-          <p>{this.state.message}</p>
+          </Button>  
         </>
       )
 
       loginButton = (
         <>
-        <Button color='teal' id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>          
-        <p>{this.state.message}</p>
+          <Button 
+            color='teal' 
+            id="login" 
+            onClick={() => 
+              this.setState({ renderLoginForm: true, renderSignupForm: false })
+            }>
+              Login
+          </Button>          
         </>
       )
     }
@@ -154,13 +162,35 @@ class Nav extends Component {
 
     return (
       <>
-    
       <Segment inverted color='teal'>
 
         <Menu inverted secondary>
-          <Menu.Item as='a'><NavLink activeStyle={{fontWeight: 'bold'}} to='/cooper'>Cooper Calculator</NavLink></Menu.Item>
-          <Menu.Item as='a'><NavLink activeStyle={{fontWeight: 'bold'}} to='/bmi'>BMI</NavLink></Menu.Item>
-          <Menu.Item as='a'><NavLink activeStyle={{fontWeight: 'bold'}} to='/history'>History</NavLink></Menu.Item>
+          <Menu.Item as='a'>
+            <NavLink 
+              onClick={() => this.setState({ renderLoginForm: false, renderSignupForm: false })} 
+              activeStyle={{fontWeight: 'bold'}} 
+              to='/cooper'>
+              Cooper Calculator
+            </NavLink>
+          </Menu.Item>
+          
+          <Menu.Item as='a'>
+            <NavLink               
+              onClick={() => this.setState({ renderLoginForm: false, renderSignupForm: false })} 
+              activeStyle={{fontWeight: 'bold'}} 
+              to='/bmi'>
+              BMI
+            </NavLink>
+          </Menu.Item>
+
+          <Menu.Item as='a'>  
+            <NavLink 
+              onClick={() => this.setState({ renderLoginForm: false, renderSignupForm: false })} 
+              activeStyle={{fontWeight: 'bold'}} 
+              to='/history'>
+              History
+            </NavLink>
+          </Menu.Item>
 
 
           <Menu.Menu position='right'>
@@ -171,13 +201,13 @@ class Nav extends Component {
         </Menu>
 
       </Segment>
-
+      <Grid centered columns={2}>
+        <Grid.Column textAlign='center'>
+          {this.state.message}
+        </Grid.Column>
+      </Grid>
 
       {userForm}
-
-    
-
-  
 
       </>
     );
