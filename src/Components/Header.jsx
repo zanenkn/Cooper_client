@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 import { authenticate, register, logout } from '../Modules/Auth'
-import { Button, Grid, Segment, Icon, Menu, Container, Form } from 'semantic-ui-react'
+import { Button, Grid, Segment, Icon, Menu, Container, Form, Divider, Header } from 'semantic-ui-react'
 
 
-class Header extends Component {  
+class Nav extends Component {  
   constructor(props) {
     super(props)
     this.state = {
@@ -98,18 +98,27 @@ class Header extends Component {
     if(this.state.renderLoginForm === true) {
       userForm = (
         <>
-          <Form>
-          <LoginForm 
-            loginHandler={this.onLogin.bind(this)}
-            inputChangeHandler={this.onChange.bind(this)}
-          />
-          <Icon 
-            link name="angle up" 
-            color='teal' 
-            size='big' 
-            onClick={() => this.setState({ renderLoginForm: false })}
-          />
-          </Form>
+          <Container>
+            <Grid centered columns={2}>
+              <Grid.Column>
+                <LoginForm 
+                  loginHandler={this.onLogin.bind(this)}
+                  inputChangeHandler={this.onChange.bind(this)}
+                />
+              </Grid.Column>
+            </Grid>
+          </Container>
+
+          <Divider horizontal>
+            <Header as="h1">
+              <Icon 
+                link name="angle up" 
+                color='teal' 
+                size='massive' 
+                onClick={() => this.setState({ renderLoginForm: false })}
+              />
+            </Header>
+          </Divider>
         </>
       )
     }
@@ -117,16 +126,27 @@ class Header extends Component {
     if(this.state.renderSignupForm === true) {
       userForm = (
         <>
-            <SignupForm 
-              signupHandler={this.onSignup.bind(this)}
-              inputChangeHandler={this.onChange.bind(this)}
-            />
-            <Icon 
-              link name="angle up" 
-              color='teal' 
-              size='big' 
-              onClick={() => this.setState({ renderSignupForm: false })}
-            />
+          <Container>
+            <Grid centered columns={2}>
+              <Grid.Column>
+                <SignupForm 
+                  signupHandler={this.onSignup.bind(this)}
+                  inputChangeHandler={this.onChange.bind(this)}
+                />
+              </Grid.Column>
+            </Grid>
+          </Container>
+            
+          <Divider horizontal>
+            <Header as="h1">
+              <Icon 
+                link name="angle up" 
+                color='teal' 
+                size='massive' 
+                onClick={() => this.setState({ renderSignupForm: false })}
+              />
+            </Header>
+          </Divider>
         </>
       )
     }
@@ -152,13 +172,9 @@ class Header extends Component {
 
       </Segment>
 
-      <Container>
-        <Grid centered columns={2}>
-          <Grid.Column>
-          {userForm}
-          </Grid.Column>
-        </Grid>
-      </Container>
+
+      {userForm}
+
     
 
   
@@ -168,4 +184,4 @@ class Header extends Component {
   }
 };
 
-export default Header
+export default Nav
