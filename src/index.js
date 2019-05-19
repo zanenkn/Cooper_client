@@ -5,6 +5,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import CooperCalculator from './Components/CooperCalculator'
 import DisplayPerformanceData from './Components/DisplayPerformanceData'
 import Header from './Components/Header'
+import 'semantic-ui-css/semantic.min.css'
 
 const Application = () => {
   return (
