@@ -1,8 +1,8 @@
 import React from 'react'
-import { Form, Select } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 
 const InputFields = (props) => {
-  const options = [female, male]
+
   return (
     <Form>
       <Form.Field>
@@ -12,17 +12,21 @@ const InputFields = (props) => {
         </div>
       </Form.Field>
 
-      <Select
-        id="gender" onChange={props.inputChangeHandler}
-        options={options}
-      />
-
       <Form.Field>
         <div>
           <label>Age</label>
           <input id="age" onChange={props.inputChangeHandler}></input>
         </div>
       </Form.Field>
+
+      <Form.Field>
+        <select id="gender" onChange={props.inputChangeHandler}>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+        </select>
+      </Form.Field>
+
+
     </Form>
   )
 }

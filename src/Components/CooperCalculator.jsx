@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DisplayCooperResult from './DisplayCooperResult.jsx'
 import InputFields from './InputFields.jsx'
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 
 class CooperCalculator extends Component {
@@ -38,15 +38,22 @@ class CooperCalculator extends Component {
           />
         </Grid.Column>
       </Grid>
-        
-        <DisplayCooperResult
-          distance={this.state.distance}
-          gender={this.state.gender}
-          age={this.state.age}
-          authenticated={this.state.authenticated}
-          entrySaved={this.state.entrySaved}
-          entryHandler={this.entryHandler.bind(this)}
-        />
+
+      <Grid centered columns={2}>
+        <Grid.Column>
+          
+            <DisplayCooperResult
+              distance={this.state.distance}
+              gender={this.state.gender}
+              age={this.state.age}
+              authenticated={this.state.authenticated}
+              entrySaved={this.state.entrySaved}
+              entryHandler={this.entryHandler.bind(this)}
+            />
+    
+        </Grid.Column>
+      </Grid>
+
       </>
     );
   }
