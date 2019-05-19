@@ -21,8 +21,6 @@ const panes = [
 const BMICalculator = () => (
   <Grid centered columns={2}>
     <Grid.Column>
-
-      <h1>BMI Calculator</h1>
       <Tab name="method" menu={{ secondary: true, pointing: true }} panes={panes}/>
 
     </Grid.Column>

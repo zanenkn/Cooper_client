@@ -179,7 +179,7 @@ class Nav extends Component {
               onClick={() => this.setState({ renderLoginForm: false, renderSignupForm: false })} 
               activeStyle={{fontWeight: 'bold'}} 
               to='/bmi'>
-              BMI
+              BMI Calculator
             </NavLink>
           </Menu.Item>
 
@@ -188,7 +188,7 @@ class Nav extends Component {
               onClick={() => this.setState({ renderLoginForm: false, renderSignupForm: false })} 
               activeStyle={{fontWeight: 'bold'}} 
               to='/history'>
-              History
+              Your Runs
             </NavLink>
           </Menu.Item>
 
