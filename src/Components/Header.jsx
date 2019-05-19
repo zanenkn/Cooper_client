@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 import { authenticate, register, logout } from '../Modules/Auth'
-import { Button, Grid, Segment, Icon, Menu, Container, Form} from 'semantic-ui-react'
+import { Button, Grid, Segment, Icon, Menu, Container, Form } from 'semantic-ui-react'
 
 
 class Header extends Component {  
