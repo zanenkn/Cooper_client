@@ -1,19 +1,18 @@
 describe('BMI Calculator', () => {
   before(function() {
-    cy.visit('http://localhost:3000');
+    cy.visit('http://localhost:3001');
   });
 
   beforeEach(function() {
     cy.reload();
   });
 
-  it('should display "BMI Calculator" text on page', () => {
-    cy.contains('BMI Calculator');
-  });
-
   describe('Metric method', () => {
     beforeEach(() => {
-      cy.get('a:first').click()
+      cy.get('#bmilink').click()
+      cy.get('.column').within(() => {
+        cy.get('a:first').click()
+      })
       cy.get('input[name="weight"]').type('95')
       cy.get('input[name="height"]').type('186')
     })
@@ -29,6 +28,7 @@ describe('BMI Calculator', () => {
 
   describe('Imperial method', () => {
     beforeEach(() => {
+      cy.get('#bmilink').click()
       cy.get('a:last').click()
       cy.get('input[name="weight"]').type('200')
       cy.get('input[name="height"]').type('73')  

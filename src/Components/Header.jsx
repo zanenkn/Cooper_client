@@ -166,7 +166,8 @@ class Nav extends Component {
 
         <Menu inverted secondary>
           <Menu.Item as='a'>
-            <NavLink 
+            <NavLink
+              id="cooperlink"
               onClick={() => this.setState({ renderLoginForm: false, renderSignupForm: false })} 
               activeStyle={{fontWeight: 'bold'}} 
               to='/cooper'>
@@ -175,7 +176,8 @@ class Nav extends Component {
           </Menu.Item>
           
           <Menu.Item as='a'>
-            <NavLink               
+            <NavLink
+              id="bmilink"
               onClick={() => this.setState({ renderLoginForm: false, renderSignupForm: false })} 
               activeStyle={{fontWeight: 'bold'}} 
               to='/bmi'>
@@ -184,7 +186,8 @@ class Nav extends Component {
           </Menu.Item>
 
           <Menu.Item as='a'>  
-            <NavLink 
+            <NavLink
+              id="runlink"
               onClick={() => this.setState({ renderLoginForm: false, renderSignupForm: false })} 
               activeStyle={{fontWeight: 'bold'}} 
               to='/history'>
