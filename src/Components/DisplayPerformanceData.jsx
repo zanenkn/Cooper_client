@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getData } from '../Modules/PerformanceData'
 import { Line, Pie } from 'react-chartjs-2'
 import moment from 'moment'
+import { Container, Grid } from 'semantic-ui-react'
 
 class DisplayPerformanceData extends Component {
   constructor(props) {
@@ -50,7 +51,6 @@ class DisplayPerformanceData extends Component {
       )
     }
 
-
     let line = {
       labels: labels,
       datasets: [{
@@ -58,7 +58,7 @@ class DisplayPerformanceData extends Component {
         data: distances,
         fill: false,
         lineTension: 0.1,
-        borderColor: "#00cc99",
+        borderColor: "#00b5ad",
       }],
     }
 
@@ -83,13 +83,26 @@ class DisplayPerformanceData extends Component {
 
     return (
       <>
-        {dataIndex}
-        <Line
-          data={line}
-          />
-        <Pie 
-          data={pie}
-          />
+        {/* {dataIndex} */}
+        <Container>
+          <Grid centered columns={2}>
+            <Grid.Column>
+              <Line
+                data={line}
+              />
+            </Grid.Column>
+          </Grid>
+        </Container>
+
+        <Container>
+          <Grid centered columns={2}>
+            <Grid.Column>
+              <Pie 
+                data={pie}
+              />
+            </Grid.Column>
+          </Grid>
+        </Container>
       </>
     )
   }

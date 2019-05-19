@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DisplayCooperResult from './DisplayCooperResult.jsx'
 import InputFields from './InputFields.jsx'
+import { Grid } from 'semantic-ui-react';
 
 
 class CooperCalculator extends Component {
@@ -30,9 +31,13 @@ class CooperCalculator extends Component {
 
     return (
       <>
-        <InputFields
-          inputChangeHandler={this.onChange.bind(this)}
-        />
+      <Grid centered columns={2}>
+        <Grid.Column>
+          <InputFields
+            inputChangeHandler={this.onChange.bind(this)}
+          />
+        </Grid.Column>
+      </Grid>
         
         <DisplayCooperResult
           distance={this.state.distance}
