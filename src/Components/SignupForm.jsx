@@ -26,7 +26,7 @@ const SignupForm = (props) => {
         </div>
       </Form.Field>
       
-      <Button color='teal' onClick={(e) => props.signupHandler(e)} id="submit">Submit</Button>
+      <Button color='teal' onClick={(e) => props.signupHandler(e)} id="submit">Sign up</Button>
     </form>
   </Form>
   )

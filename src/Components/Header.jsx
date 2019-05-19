@@ -34,7 +34,7 @@ class Nav extends Component {
     e.preventDefault()
     let resp = await authenticate(this.state.email, this.state.password)
     if (resp.authenticated === true) {
-      this.setState({ authenticated: true })
+      this.setState({ authenticated: true, renderLoginForm: false })
     } else {
       this.setState({ message: resp.message, renderLoginForm: false })
     }
@@ -44,7 +44,7 @@ class Nav extends Component {
     e.preventDefault();
     let resp = await register(this.state.email, this.state.password, this.state.password_confirmation)
     if (resp.authenticated === true) {
-      this.setState({ authenticated: true });
+      this.setState({ authenticated: true, renderSignupForm: false });
     } else {
       this.setState({ message: resp.message, renderSignupForm: false })
     }
