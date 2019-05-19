@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import DisplayCooperResult from './Components/DisplayCooperResult'
 import InputFields from './Components/InputFields.jsx'
 import LoginForm from './Components/LoginForm'
-import { authenticate } from './Modules/Auth'
+import SignupForm from './Components/SignupForm'
+import { authenticate, register, logout } from './Modules/Auth'
 import DisplayPerformanceData from './Components/DisplayPerformanceData'
 
 class App extends Component {
@@ -18,7 +19,9 @@ class App extends Component {
       password: '',
       message: '',
       entrySaved: false,
-      renderIndex: false
+      renderIndex: false,
+      renderSignupForm: false,
+      password_confirmaton: ''
     }
   }
 
@@ -47,15 +50,47 @@ class App extends Component {
     }
   }
 
+  async onSignup(e) {
+    e.preventDefault();
+    let resp = await register(this.state.email, this.state.password, this.state.password_confirmation)
+    if (resp.authenticated === true) {
+      this.setState({ authenticated: true });
+    } else {
+      debugger
+      this.setState({ message: resp.message, renderSignupForm: false })
+    }
+  }
+
+  async onLogout(e) {
+    e.preventDefault();
+    let resp = await logout()
+    if (resp.authenticated === false) {
+      this.setState({ authenticated: false });
+    } else {
+      this.setState({ message: resp.message })
+    }
+  }
+
+
   render() {
     let renderLogin;
     let user;
     let performanceDataIndex;
+    let renderSignup;
+    let renderLogout
 
     if (this.state.authenticated === true) {
       user = JSON.parse(sessionStorage.getItem('credentials')).uid
       renderLogin = (
         <p>Hi {user}</p>
+      )
+      renderLogout =(
+        <>
+        <button id="logout" onClick={this.onLogout.bind(this)}>Log out</button>
+        {/* logoutHandler=
+
+        {(e) => props.logoutHandler(e)} */}
+        </>
       )
 
       if (this.state.renderIndex === true) {
@@ -91,6 +126,28 @@ class App extends Component {
           </>
         )
       }
+
+      
+      if (this.state.renderSignupForm === true) {
+        renderSignup = (
+          <>
+            <SignupForm 
+              signupHandler={this.onSignup.bind(this)}
+              inputChangeHandler={this.onChange.bind(this)}
+            />
+          </>
+        )
+      } else {
+        renderSignup = (
+          <>
+            <button id="signup" onClick={() => this.setState({ renderSignupForm: true})}>Sign up</button>
+            <p>{this.state.message}</p>
+          </>
+        )
+      }
+
+
+
     }
   
 
@@ -110,6 +167,8 @@ class App extends Component {
         />
         {performanceDataIndex}
         {renderLogin}
+        {renderSignup}
+        {renderLogout}
       </>
     );
   }
