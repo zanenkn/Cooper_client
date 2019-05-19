@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { getData } from '../Modules/PerformanceData'
 import { Line, Pie } from 'react-chartjs-2'
 import moment from 'moment'
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid, Divider } from 'semantic-ui-react'
 
 class DisplayPerformanceData extends Component {
   constructor(props) {
@@ -77,7 +77,8 @@ class DisplayPerformanceData extends Component {
           messages.filter(item => item === "Average").length,
           messages.filter(item => item === "Below average").length,
           messages.filter(item => item === "Poor").length
-        ]
+        ],
+        backgroundColor: ["#b3fffb", "#00fff2", "#00e6da", "#00ccc2", "#00b5ad"]
       }],
     }
 
@@ -93,6 +94,14 @@ class DisplayPerformanceData extends Component {
             </Grid.Column>
           </Grid>
         </Container>
+
+      
+        <Grid centered columns={2}>
+          <Grid.Column>
+            <Divider />
+          </Grid.Column>
+        </Grid>
+        
 
         <Container>
           <Grid centered columns={2}>
