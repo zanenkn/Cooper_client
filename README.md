@@ -57,7 +57,9 @@ See the deployed site [here](https://cooper-calculator.netlify.com/).
 # Tested with
 
 [RSPEC](http://rspec.info) - Making TDD Productive and Fun.
+
 [Cypress](https://www.cypress.io/) - Fast, easy and reliable testing for anything that runs in a browser.
+
 [Enzyme](https://airbnb.io/enzyme/) - JavaScript Testing utility for React that makes it easier to test your React Components' output.
 
 <br>
