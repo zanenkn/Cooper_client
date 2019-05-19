@@ -2,6 +2,7 @@ describe('User attempts save data', () => {
 
   beforeEach(function() {
     cy.visit('http://localhost:3001');
+    cy.get('#cooperlink').click()
     cy.server();
     cy.route({
       method: 'POST',
